@@ -1,25 +1,26 @@
-import logo from './logo.svg';
+import React from "react";
+import { Link } from "react-router-dom";
 import './App.css';
+import contacts from './mockdata.json'
+import Home from "./Home";
+import Contacts from "./Contacts";
+import ContactDetail from "./ContactDetail";
 
-function App() {
+
+
+export default function ContactList() {
+    const listItems = contacts.map(contact =>
+    <li
+      key={contact.id}
+      style={{
+        color: contact.isMale ? 'darkgreen' : 'magenta'
+      }}
+    >
+      {contact.name} - {contact.phone}
+    </li>
+  );
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>{listItems}</ul>
   );
 }
-
-export default App;
